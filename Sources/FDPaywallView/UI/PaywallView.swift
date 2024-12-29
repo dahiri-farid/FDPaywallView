@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@MainActor
 public protocol PaywallViewModelDelegate: AnyObject {
     func subscribe(plan: SubscriptionPlanDisplayData) async
 }
