@@ -14,7 +14,7 @@ public protocol PaywallViewModelDelegate: AnyObject {
 
 public struct PaywallView: View {
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
-    weak var delegate: PaywallViewModelDelegate?
+    public weak var delegate: PaywallViewModelDelegate?
     
     @State private var displayData: PaywallViewDisplayData
     
