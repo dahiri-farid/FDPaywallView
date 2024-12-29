@@ -12,6 +12,7 @@ public protocol PaywallViewModelDelegate: AnyObject {
 }
 
 public struct PaywallView: View {
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
     weak var delegate: PaywallViewModelDelegate?
     
     @State private var displayData: PaywallViewDisplayData
@@ -21,11 +22,10 @@ public struct PaywallView: View {
     }
     
     public var body: some View {
-        if UIDevice.current.userInterfaceIdiom == .pad {
-            Image(displayData.iconName)
-                .resizable()
-                .frame(width: 100, height: 100)
-        }
+        let size: CGFloat = (horizontalSizeClass == .regular) ? 200 : 100
+        Image(displayData.iconName)
+            .resizable()
+            .frame(width: size, height: size)
         Text(displayData.title)
             .font(.largeTitle)
         List {
